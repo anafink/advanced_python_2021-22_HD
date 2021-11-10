@@ -28,8 +28,10 @@ with open("mfastacount.csv", "w") as output:
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
-fig1 = plt.figure(figsize=(15,5))
-fig1 = plt.bar(mfastac.keys(), mfastac.values(), width=.5, color='g', align="center")
+fig,ax = plt.subplots(4,1)
+
+ax[0].bar(mfastac.keys(), mfastac.values(), width=.5, color='g', align="center")
+
 
 #example for plantae kingdom: Zea mays (maize)
 
@@ -59,8 +61,8 @@ with open("pfastacount.csv", "w") as output:
     for  aa, num in Counter(pfastastr).items():
         output.write(str(str(aa) + ", " + str(num) + "\n"))
 
-fig2 = plt.figure(figsize=(15,5))
-fig2 = plt.bar(pfastac.keys(), pfastac.values(), width=.5, color='g', align="center")
+
+ax[1].bar(pfastac.keys(), pfastac.values(), width=.5, color='g', align="center")
 
 
 #example for archea kingdom: Halobacterium salinarum
@@ -90,8 +92,8 @@ with open("afastacount.csv", "w") as output:
     for  aa, num in Counter(afastastr).items():
         output.write(str(str(aa) + ", " + str(num) + "\n"))
 
-fig3 = plt.figure(figsize=(15,5))
-fig3 = plt.bar(afastac.keys(), afastac.values(), width=.5, color='g', align="center")
+
+ax[2].bar(afastac.keys(), afastac.values(), width=.5, color='g', align="center")
 
 #example for bacteria kingdom: Thermus aquaticus
 bpath = "/Users/anafink/OneDrive - bwedu/Bachelor MoBi/5. Fachsemester/Python Praktikum/uniprot-reviewed_yes+organism__Thermus+aquaticus+(THEAQ)+[271]_.fasta"
@@ -115,22 +117,14 @@ bfastac = {}
 bfastac = Counter(bfastastr)
 print(bfastac)
 
-fig4 = plt.figure(figsize=(15,5))
-fig4 = plt.bar(bfastac.keys(), bfastac.values(), width=.5, color='g', align="center")
+
+ax[3].bar(bfastac.keys(), bfastac.values(), width=.5, color='g', align="center")
 
 with open("bfastacount.csv", "w") as output:
     output.write(str("aa, count \n"))
     for  aa, num in Counter(bfastastr).items():
         output.write(str(str(aa) + ", " + str(num) + "\n"))
 
+fig.savefig("allkingdoms.pdf")
 
 
-
-from matplotlib.backends.backend_pdf import PdfPages
-
-aaking = PdfPages('Aa histograms of all kingdoms.pdf')
-aaking.savefig(fig1)
-aaking.savefig(fig2)
-aaking.savefig(fig3)
-aaking.savefig(fig4)
-aaking.close()
