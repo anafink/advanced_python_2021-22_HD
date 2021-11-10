@@ -28,7 +28,7 @@ with open("mfastacount.csv", "w") as output:
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
-fig,ax = plt.subplots(4,1)
+fig,ax = plt.subplots(4,1, figsize = (15,15))
 
 ax[0].bar(mfastac.keys(), mfastac.values(), width=.5, color='g', align="center")
 
