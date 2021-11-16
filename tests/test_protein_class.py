@@ -8,8 +8,7 @@ sys.path.append(
 from protein_class.protein_class import Protein
 
 
-
 def test_protein_pos():
-    ex_protein = Protein("Some Protein", 1234, ["A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y"])
+    ex_protein = Protein("Some Protein", "1234", ["A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y"])
     ex_pos = ex_protein.get_aa_pos
-    assert ex_pos == list(range(1,len(["A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y"])+1))
+    assert ex_pos == ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
