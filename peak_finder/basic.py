@@ -28,14 +28,22 @@ def find_peaks(list_of_intensities):
 
     """
     peaks = []
-    tuple_rgb = []
+    
 
     for num, value in enumerate(list_of_intensities):
         if num == 0 or num == len(list_of_intensities)-1:
             continue
         pre_value = list_of_intensities[num -1]
         post_value = list_of_intensities[num + 1]
-        
-        if pre_value < value > post_value:
-            peaks.append(value)
+        if type(list_of_intensities[num]) == tuple:
+            pre_value = sum(list_of_intensities[num -1])
+            post_value = sum(list_of_intensities[num + 1])
+            value_sum = sum(list_of_intensities[num])
+            if pre_value < value_sum > post_value:
+             peaks.append(value)
+        else:
+         if pre_value < value > post_value:
+             peaks.append(value)
+
+
     return peaks
