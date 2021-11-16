@@ -20,7 +20,7 @@ metrics = {
 }
 
 
-class protein:
+class Protein:
 
     def __init__(self, name, id, sequence):
         self.name = name
