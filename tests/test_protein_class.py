@@ -7,7 +7,6 @@ sys.path.append(
 
 from protein_class.protein_class import Protein
 
-
 def test_protein_pos():
     ex_protein = Protein("Some Protein", "1234", ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])
     ex_pos = ex_protein.get_aa_pos()
